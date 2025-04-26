@@ -1,6 +1,8 @@
 // require mongoose
 const mongoose = require("mongoose");
 
+const User = require("./Users");
+
 // connect to the local server
 mongoose.connect("mongodb://127.0.0.1:27017");
 // storing connection in db
