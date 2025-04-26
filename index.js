@@ -33,11 +33,26 @@ app.get("/", (req, res) => {
     res.status(200).send("Welcome to The Home Page of the CRUD API");
 })
 
-// users route - get all users 
+// users route - get all users  ---------------------------------------------
 app.get("/users", async (req, res) => {
     const users = await User.find();
     res.status(200).send({ message : "All users in MongoDB compass", users : users });
 })
+
+// users route - get single user searching id specific user
+app.get("/users/:id", async (req, res) => {
+    // url id store in id variable
+ const id = req.params.id;
+ // find id in User collection
+ const user = await User.findById(id);
+ if(!user) {
+    return res.status(404).send({message : "User Not found"})
+ }
+
+ res.status(200).send({message : " user found", user : user})
+
+})
+
 
 
 
