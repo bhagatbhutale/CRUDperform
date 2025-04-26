@@ -1,0 +1,19 @@
+{
+  "name": "assignment_2node_mongo",
+  "version": "1.0.0",
+  "description": "This is a Node and Mongodb assignment",
+  "license": "ISC",
+  "author": "Bhagat Bhutale",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,6 @@
+Project Started :-
+
+- npm init
+- npm i mongoose
+- npm i express
+- npm i nodemon
