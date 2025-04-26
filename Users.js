@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-
-
 // users Schema and it Require Validates this all Scehema
 const userSchema = new mongoose.Schema({
   name: {

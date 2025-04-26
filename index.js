@@ -28,12 +28,16 @@ db.on("error", () => {
 } )
 // -------------------------------------------------------------------
 
-// get all users 
-// async function getAllUsers() {
-//     try {
-//         const users = User.find({});
-//         response.send(users);
-//     } catch (error) {
-//         res.status(500).send({message : "Error Fecthing users "})
-//     }
-// }
+// home route - checking the server is run or not
+app.get("/", (req, res) => {
+    res.status(200).send("Welcome to The Home Page of the CRUD API");
+})
+
+// users route - get all users 
+app.get("/users", async (req, res) => {
+    const users = await User.find();
+    res.status(200).send({ message : "All users in MongoDB compass", users : users });
+})
+
+
+
