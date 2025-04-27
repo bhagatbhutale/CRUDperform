@@ -39,6 +39,7 @@ app.get("/users", async (req, res) => {
     res.status(200).send({ message : "All users in MongoDB compass", users : users });
 })
 
+
 // users route - get single user searching id specific user
 app.get("/users/:id", async (req, res) => {
     // url id store in id variable
@@ -48,9 +49,26 @@ app.get("/users/:id", async (req, res) => {
  if(!user) {
     return res.status(404).send({message : "User Not found"})
  }
-
+ // user not found
  res.status(200).send({message : " user found", user : user})
+})
 
+
+
+app.post("/user", async (req, res) => {
+    // get value from req.body
+    const { name , age, isAdult, city } = req.body
+    const newUser = await User.create({
+        name : name,
+        age : age,
+        isAdult : isAdult,
+        city : city
+    })
+    // save newUser
+newUser.save()
+// send all users in response
+res.status(201).send({message : "User Created is Successfully", users : await User.find()})
+   
 })
 
 
