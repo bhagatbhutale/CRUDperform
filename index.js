@@ -54,7 +54,7 @@ app.get("/users/:id", async (req, res) => {
 })
 
 
-
+// post route - add a newUser in the Database 
 app.post("/user", async (req, res) => {
     // get value from req.body
     const { name , age, isAdult, city } = req.body
@@ -69,6 +69,35 @@ newUser.save()
 // send all users in response
 res.status(201).send({message : "User Created is Successfully", users : await User.find()})
    
+})
+
+
+// put route - update the exixting the user 
+app.put("/user/:id", async (req, res) => {
+
+    // get the url id
+    const { id } = req.params;
+    // req body values
+    const { name, age, isAdult, city} = req.body;
+
+    // get the idObject and update the use
+    const updateUser = await User.findByIdAndUpdate(id, {name, age, isAdult, city}, { new: true })
+
+    // user updated send
+    res.status(200).send(updateUser);
+
+})
+
+
+// delete route - delete the user usinng id 
+
+app.delete("/user/:id", async (req, res) => {
+    const id = req.params.id;
+
+    const deleteUser = await User.findByIdAndDelete(id)
+
+
+    res.status(200).send({ message : "User Deleted Successfully ", deleteUser : deleteUser, users : await User.find()})
 })
 
 
